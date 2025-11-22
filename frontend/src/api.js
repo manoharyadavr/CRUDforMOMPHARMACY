@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://crudformompharmacy.onrender.com/api",
 });
 
 export const getProjects = () => API.get("/projects");
