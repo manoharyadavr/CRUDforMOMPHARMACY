@@ -8,16 +8,28 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
+const allowedOrigins = [
+  "https://crudformompharmacy-manoharyadav.onrender.com",
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+}));
+
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("API is running");
+  res.send("Backend API is running successfully ✅");
 });
+
 
 const projectRoutes = require("./routes/projectRoutes");
 app.use("/api/projects", projectRoutes);
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () =>
+  console.log(`Server running on port ${PORT}`)
+);
